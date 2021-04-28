@@ -6,6 +6,6 @@ Assignment for Poshmark: Resource Allocator
 
 ## Steps to Run:
 1. Clone or Download the repository.
-2. Run the command
+2. Run the command python test_app.py hours cpus price
 3. Result will be a list of dictionaries(sorted by total cost) containing region,total cost
    and servers.
