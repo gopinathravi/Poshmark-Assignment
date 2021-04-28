@@ -117,20 +117,20 @@ def getServerCombination(server_combination_data,total_cost,cost_list_h,server_c
     return server_combination,total_cost
 
 #preparing the instance cost list
-def fetchServerCostList(server_list_map,hours,cpus,price):
+def fetchServerCostList(server_types_map,hours,cpus,price):
     server_combination_data = []
     server_combination   = []
     total_cost           = []
-    for k,v in input_instances.items():
+    for k,v in input_server_instances.items():
 
-        server_list = [0 for s in range(len(server_list_map))]
+        server_list = [0 for s in range(len(server_types_map))]
 
-        cost_list = [0 for s in range(len(server_list_map))]
+        cost_list = [0 for s in range(len(server_types_map))]
         
-        for i in range(len(server_list_map)):
-            if server_list_map[i] in list(v.keys()):
+        for i in range(len(server_types_map)):
+            if server_types_map[i] in list(v.keys()):
                 server_list[i] = 2**i
-                cost_list[i]   = v[server_list_map[i]]
+                cost_list[i]   = v[server_types_map[i]]
             else:
                 cost_list[i]   = -1
         
@@ -172,7 +172,7 @@ def get_costs(hours,cpus,price):
         for i in range(len(totalCost)):
             price_list.append(sum(totalCost[i]))
         
-        for j in input_instances.keys():
+        for j in input_server_instances.keys():
             ans_dict = {}
             if flag == 0:
                 counter = 0
@@ -185,9 +185,9 @@ def get_costs(hours,cpus,price):
             
             ans_dict["servers"]    = []
             
-            for s in range(len(server_list_map)):
+            for s in range(len(server_types_map)):
                 if retServers[counter][s] > 0.0:
-                    sr = (server_list_map[s],retServers[counter][s])
+                    sr = (server_types_map[s],retServers[counter][s])
                     ans_dict["servers"].append(sr)
             ans_item_list.append(ans_dict)
 
